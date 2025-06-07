@@ -1,0 +1,16 @@
+{
+  "name": "yamayosa-news",
+  "version": "1.0.0",
+  "description": "山口県よさこい連絡協議会のお知らせシステム",
+  "main": "index.js",
+  "scripts": {
+    "convert": "node converter.js",
+    "start": "live-server --port=8080"
+  },
+  "dependencies": {
+    "iconv-lite": "^0.6.3"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

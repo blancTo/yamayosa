@@ -1,0 +1,203 @@
+/**
+ * 山口県よさこい連絡協議会の新しいスタイル
+ * Netlify対応版
+ */
+
+/* 新着情報アイテム */
+.news-item {
+  width: 90%;
+  background: #fff;
+  border: 1px solid #005500;
+  margin: 1em auto;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ニュースヘッダー */
+.news-header {
+  background: #ffffff;
+  padding: 5px 0;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 10px;
+}
+
+/* ニュースアイコン */
+.news-icon {
+  font-size: 14px;
+  color: #f39800;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+/* ニュースタイトル */
+.news-title {
+  font-size: 14px;
+  color: #005500;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* ニュース日付 */
+.news-date {
+  font-family: Verdana, sans-serif;
+  font-size: 13px;
+  color: #000000;
+}
+
+/* ニュースコンテンツ */
+.news-content {
+  padding: 5px;
+  overflow: hidden;
+}
+
+/* ニューステキスト */
+.news-text {
+  font-family: Verdana, sans-serif;
+  font-size: 85%;
+  color: #000000;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+/* 画像コンテナ */
+.image-container {
+  text-align: center;
+  margin-bottom: 10px;
+  min-height: 50px;
+}
+
+/* ニュース画像 */
+.news-image {
+  max-width: 150px;
+  margin: 5px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.news-image:hover {
+  transform: scale(1.05);
+}
+
+/* YouTube埋め込み */
+.youtube-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9のアスペクト比 */
+  height: 0;
+  margin-bottom: 15px;
+}
+
+.youtube-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 検索コンテナ */
+#search-container {
+  margin: 20px auto;
+  text-align: center;
+}
+
+#search-form {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#search-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 250px;
+}
+
+#search-condition {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #005500;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #006600;
+}
+
+/* ページネーション */
+#pagination {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.pagination-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.page-info {
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.page-select {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ローディングメッセージ */
+#loading-message {
+  text-align: center;
+  margin: 20px 0;
+  font-weight: bold;
+  color: #666;
+}
+
+/* ニュースコンテナ - ちらつき防止のため表示方法を変更 */
+#news-container {
+  /* 初期表示設定 */
+  display: none;
+  opacity: 1;  /* 最初から不透明に設定 */
+}
+
+#news-container.show {
+  display: block;
+}
+
+/* レイアウトシフトを防ぐためのミニマムハイト */
+#main {
+  min-height: 400px;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .news-item {
+    width: 95%;
+  }
+  
+  #search-form {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  #search-input {
+    width: 100%;
+  }
+  
+  .pagination-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

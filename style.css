@@ -1,0 +1,145 @@
+ {
+	padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px
+}
+
+
+body {
+	padding-right: 0px; 
+	padding-left: 0px; 
+	font-size: 90%; 
+	background: url() #ffffff repeat-x left top; 
+	padding-bottom: 6px; 
+	margin: 0px 5%; 
+	color: #000000; 
+	line-height: 150%; 
+	padding-top: 6px; 
+	text-align: center;
+
+	scrollbar-face-color: #ffffff; 
+	scrollbar-highlight-color: #005500; 
+	scrollbar-shadow-color: #005500; 
+	scrollbar-3dlight-color: #005500; 
+	scrollbar-arrow-color: #005500; 
+	scrollbar-track-color: #ffffff; 
+	scrollbar-darkshadow-color: #ffffff; 
+	scrollbar-base-color: #ffffff
+}
+
+
+a 		{color: #e83929; font-weight: bold; text-decoration: none}
+a:link	 	{color: #e83929; font-weight: bold; text-decoration: none}
+a:visited 	{color: #e83929; font-weight: bold; text-decoration: none}
+a:hover 	{color: #FF0000; font-weight: bold; text-decoration: underline}
+a:active 	{color: #f08300; font-weight: bold; text-decoration: underline}
+
+h1 {	font-weight: normal; font-size: 100%; margin: 0px 0px 0px; color: #e83929}
+h2 {	font-weight: bold; font-size: 120%; margin: 0px 5px 2px; color: #e83929; border-bottom: #005500 1px solid;text-align: left}
+h3 {	font-weight: bold; font-size: 110%; margin: 0px 5px 0px; color: #005500; border-bottom: #005500 1px solid}
+h4 {	font-weight: normal; font-size: 100%; margin: 0px 5px 0px; color: #005500; border-bottom: #005500 1px solid}
+h5 {	font-weight: normal; font-size: 100%; margin: 0px 0px 0px; color: #005500}
+ul {	font-size: 95%; line-height: 150%; list-style-type: disc}
+li {	padding-right: 0px; padding-left: 0px; padding-bottom: 1px; padding-top: 1px; list-style-position:outsides}
+img {	border-top-width: 0px; border-left-width: 0px; border-bottom-width: 0px; border-right-width: 0px}
+
+.itemarea 	{float: left; margin: 5px 0px; width: 110px}
+.list 		{						}
+.list th 	{padding-right: 20px; padding-left: 0px; padding-bottom: 10px; padding-top: 5px}
+.list td 	{padding-right: 5px; padding-left: 0px; padding-bottom: 10px; padding-top: 5px}
+.list_price 	{padding-bottom: 5px}
+.contents 	{margin: 0px 4px 0px ; border-bottom: #e83929 1px solid}
+.contents2 	{margin: 0px 4px 0px ; border-bottom: #005500 1px solid}
+.contents3 	{margin: 0px 4px 0px ; border-bottom: #f08300 1px solid}
+.right 		{font-weight: normal; margin: 0px 5px 2px; text-align: right}
+.Day_red	{color: #F00;}
+.Day_Blue	{color: #03F;}
+.red 		{color: #F00;}
+.blue 		{color: #03F;}
+.table 		{font-size: 90%; font-weight: normal; margin: 0px 30px 2px; text-align: left}
+
+#all {
+	width: 750px; 
+	background: #ffffff; 
+	padding-right: 10px; 
+	padding-left: 10px; 
+	padding-bottom: 0px; 
+	margin-left: auto; 
+	margin-right: auto; 
+	padding-top: 0px; 
+	text-align: left;
+
+	border-right: #e83929 1px solid; 
+	border-top: #e83929 1px solid; 
+	border-left: #e83929 1px solid; 
+	border-bottom: #e83929 1px solid;
+}
+
+#side_in {
+	float: left; width: 220px
+}
+
+#main {
+	float: left; width: 500px;
+	margin-left: 10px; 
+}
+
+#box {	
+	padding-right: 0px; 
+	padding-left: 5px; 
+	padding-bottom: 0px; 
+	margin-left: auto; 
+	margin-right: 0px; 
+	padding-top: 0px; 
+	text-align: left;
+}
+
+#contents {	
+	padding-right: 0px; 
+	padding-left: 5px; 
+	padding-bottom: 0px; 
+	margin-left: auto; 
+	margin-right: 0px; 
+	padding-top: 0px; 
+	text-align: left;
+}
+
+#footpath {	
+	font-size: 70%;
+	padding-right: 0px; 
+	padding-left: 0px; 
+	padding-bottom: 0px; 
+	margin-left: auto; 
+	margin-right: 0px; 
+	padding-top: 0px; 
+	text-align: left;
+}
+
+#footer {
+	clear: both;
+	padding-right: 0px; 
+	padding-left: 0px; 
+	font-size: 100%; 
+	padding-bottom: 10px; 
+	color: #696969; 
+	padding-top: 50px; 
+	line-height: 130%; 
+	text-align: right
+}
+
+#menu {
+	clear: both;
+	padding-right: 0px; 
+	padding-left: 0px; 
+	font-size: 11px; 
+	padding-bottom: 10px; 
+	color: #696969; 
+	padding-top: 50px; 
+	line-height: 130%; 
+	text-align: left
+}
+.graydate {
+	font-size: 10px;
+	color: #696969;
+}
+.notice {
+	color: #f0e68c;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="山口,やまぐち,よさこい,yosakoi,連絡協議会,男なら">
+  <meta name="Description" content="山口県よさこい連絡協議会のWebサイトです。">
+
+  <link href="./style.css" type="text/css" rel="stylesheet">
+  <link href="./new-style.css" type="text/css" rel="stylesheet">
+  <title>山口県よさこい連絡協議会</title>
+</head>
+<body>
+<div id="all">
+
+  <!-- トップエリア　ここから -->
+  <h1>山口県よさこい連絡協議会 <font color="#696969">https://www.yamayosa.com/</font></h1>
+  <a title="タイトル説明文" href="./index.html" target="_self"><img src="./img/title.gif" alt="タイトル画像" border="0"></a>
+  <div id="footpath">
+    <a href="./index.html">Top</a>
+  </div>
+  <p></p>
+
+  <h2>山口県よさこい連絡協議会</h2>
+  <div id="box">
+    <p>　山口県よさこい連絡協議会のWebサイトです。</p>
+  </div>
+  <!-- トップエリア　ここまで -->
+
+  <!-- 左サイドエリア　ここから -->
+  <div id="side_in">
+    <div class="contents"></div>
+    <h3>Contents</h3>
+    <script type="text/javascript" src="menu.js"></script>
+
+    <p>&nbsp;</p>
+
+    <div class="contents"></div>
+    <h3>Links</h3>
+    <ul>
+      <li><a href="http://www.fukukoi.com/fukuyo/" title="福岡県よさこい連絡協議会" target="_blank">福岡県よさこい連絡協議会</a></li>
+      <li><a href="http://oita-yosakoi.net/" title="大分県YOSAKOI連絡協議会" target="_blank">大分県YOSAKOI連絡協議会</a></li>
+      <li><a href="https://www.facebook.com/yosakoikizuna" title="宮崎県よさこい連絡協議会" target="_blank">宮崎県よさこい連絡協議会</a></li>
+    </ul>
+    <p>&nbsp;</p>
+
+    <p><img src="./img/bunner_yamayosa.gif" alt="バナー"> <br>
+    yamayosa.comのバナーです。</p>
+    <p>&nbsp;</p>
+  </div>
+  <!-- 左サイドエリア　ここまで -->
+
+  <!-- 右メインエリア　ここから -->
+  <div id="main">
+    <div class="contents"></div>
+    <h3>新着情報</h3>
+    <p></p>
+    
+    <div id="loading-message" style="display: block;">データを読み込み中...</div>
+    <div id="news-container" style="display: none;"></div>
+    
+    <div id="search-container">
+      <form id="search-form">
+        <input type="text" id="search-input" placeholder="キーワード検索" />
+        <select id="search-condition">
+          <option value="0">OR</option>
+          <option value="1">AND</option>
+        </select>
+        <button type="submit">検索</button>
+        <button type="button" id="reset-search">リセット</button>
+      </form>
+    </div>
+    
+    <div id="pagination">
+      <div class="pagination-controls"></div>
+    </div>
+  </div>
+  <br clear="all">
+  <!-- 右メインエリア　ここまで -->
+
+  <!-- ボトムエリア　ここから -->
+  <div id="footer">
+    <div class="contents"></div>
+
+    <!-- フッタ情報の読み込み　ここから -->
+    <script type="text/javascript" src="footer.js"></script>
+    <!-- フッタ情報の読み込み　ここまで -->
+
+     | 
+    <a href="./team.html">参加団体</a> | 
+    <a href="./event.html">イベント</a> | 
+    <a href="./chart.html">組織図</a> | 
+    <a href="./aboutus.html">連絡協議会</a> | 
+    <a href="./policy.html">サイトについて</a> | 
+    <a href="mailto:info@yamayosa.com">Mail</a> |
+
+  </div>
+  <!-- ボトムエリア　ここまで -->
+<img src="./img/bottom.gif" alt="ボトム画像" width="750" height="50" border="0">
+</div>
+
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+[
+  {
+    "id": 1,
+    "date": "2025/06/07 10:00:00",
+    "title": "サンプル投稿1",
+    "content": "これはサンプル投稿です。実際のデータを変換すると、ここに内容が表示されます。",
+    "images": [
+      {
+        "path": "sample-1.jpg",
+        "width": 400,
+        "height": 300
+      }
+    ],
+    "useHtml": false,
+    "isYoutube": false,
+    "youtube": ""
+  },
+  {
+    "id": 2,
+    "date": "2025/06/06 15:30:00",
+    "title": "サンプル投稿2 - YouTubeあり",
+    "content": "これはYouTube動画を含むサンプル投稿です。",
+    "images": [],
+    "useHtml": true,
+    "isYoutube": true,
+    "youtube": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+  },
+  {
+    "id": 3,
+    "date": "2025/06/05 09:15:00",
+    "title": "サンプル投稿3 - 複数画像",
+    "content": "これは複数の画像を含むサンプル投稿です。",
+    "images": [
+      {
+        "path": "sample-3-1.jpg",
+        "width": 400,
+        "height": 300
+      },
+      {
+        "path": "sample-3-2.jpg",
+        "width": 400,
+        "height": 300
+      }
+    ],
+    "useHtml": false,
+    "isYoutube": false,
+    "youtube": ""
+  }
+]

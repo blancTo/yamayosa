@@ -1,0 +1,5 @@
+DirectoryIndex index.html index.htm index.php index.shtml index.cgi .ht
+AuthUserFile /home/cfncake/www/yamayosa/.htpasswd
+AuthType Basic
+AuthName "Web access"
+Satisfy all
