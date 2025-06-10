@@ -8,10 +8,13 @@
     "build": "node build-posts.js",
     "start": "live-server --port=8080",
     "prebuild": "echo 'Building posts...'",
-    "postbuild": "echo 'Build completed successfully!'"
+    "postbuild": "echo 'Build completed successfully!'",
+    "fetch-forms": "node fetch-google-forms.js"
   },
   "dependencies": {
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^4.1.0",
+    "googleapis": "^134.0.0",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "live-server": "^1.2.2",
