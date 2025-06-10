@@ -39,11 +39,11 @@
     "id": 3,
     "date": "2025/06/07 12:00:00",
     "title": "昨年の祭りのハイライト動画を公開しました",
-    "content": "昨年開催された第9回山口よさこい祭りのハイライト動画をYouTubeで公開いたしました。\r\n\r\n各チームの迫力ある演舞をぜひご覧ください。今年の祭りに向けて、参考にしていただければと思います。\r\n\r\n動画は上記からご覧いただけます。\r\n\r\n来年の第10回記念大会も、さらに盛大に開催予定です。引き続きよろしくお願いいたします。",
+    "content": "昨年開催された第9回山口よさこい祭りのハイライト動画をYouTubeで公開いたしました。\r\n\r\n各チームの迫力ある演舞をぜひご覧ください。今年の祭りに向けて、参考にしていただければと思います。\r\n\r\n動画の詳細は別途お知らせいたします。\r\n\r\n来年の第10回記念大会も、さらに盛大に開催予定です。引き続きよろしくお願いいたします。",
     "images": [],
-    "useHtml": true,
-    "isYoutube": true,
-    "youtube": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+    "useHtml": false,
+    "isYoutube": false,
+    "youtube": "",
     "category": "お知らせ",
     "priority": "中"
   }
