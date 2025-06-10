@@ -7,13 +7,17 @@
     "convert": "node converter.js",
     "build": "node build-posts.js",
     "start": "live-server --port=8080",
-    "prebuild": "node build-posts.js"
+    "prebuild": "echo 'Building posts...'",
+    "postbuild": "echo 'Build completed successfully!'"
   },
   "dependencies": {
-    "iconv-lite": "^0.6.3",
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "iconv-lite": "^0.6.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
