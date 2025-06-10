@@ -9,6 +9,8 @@
   <link href="./style.css" type="text/css" rel="stylesheet">
   <link href="./new-style.css" type="text/css" rel="stylesheet">
   <title>山口県よさこい連絡協議会</title>
+  <!-- Netlify Identity Widget -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 <div id="all">
@@ -18,6 +20,11 @@
   <a title="タイトル説明文" href="./index.html" target="_self"><img src="./img/title.gif" alt="タイトル画像" border="0"></a>
   <div id="footpath">
     <a href="./index.html">Top</a>
+    <!-- 管理者ログインボタン -->
+    <span style="float: right; margin-left: 20px;">
+      <div data-netlify-identity-menu></div>
+      <div data-netlify-identity-button>管理者ログイン</div>
+    </span>
   </div>
   <p></p>
 
@@ -100,5 +107,18 @@
 </div>
 
 <script src="./app.js"></script>
+
+<!-- Netlify Identity Script -->
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 </body>
 </html>
