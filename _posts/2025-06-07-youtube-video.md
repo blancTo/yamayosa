@@ -1,10 +1,10 @@
 ---
-title: "昨年の祭りのハイライト動画を公開しました"
-date: "2025-06-07 12:00:00"
-category: "お知らせ"
-priority: "中"
+title: 昨年の祭りのハイライト動画を公開しました
+date: 2025-06-07 12:00:00
+youtube: ""
 useHtml: true
-youtube: '<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+priority: 中
+category: お知らせ
 ---
 
 昨年開催された第9回山口よさこい祭りのハイライト動画をYouTubeで公開いたしました。
