@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "date": "2025/06/07 10:00:00",
-    "title": "サンプル投稿1",
-    "content": "これはサンプル投稿です。実際のデータを変換すると、ここに内容が表示されます。",
+    "date": "2025/06/10 10:00:00",
+    "title": "山口県よさこい連絡協議会へようこそ",
+    "content": "山口県よさこい連絡協議会のWebサイトにお越しいただき、ありがとうございます。\r\n\r\nこのサイトでは、山口県内のよさこいチームの活動情報やイベント情報を発信しています。\r\n\r\n主な活動内容\r\n\r\n- よさこいイベントの企画・運営\r\n- 各チーム間の交流促進\r\n- よさこい文化の普及活動\r\n- 新規チームの支援\r\n\r\n最新の情報は随時更新していきますので、ぜひブックマークしてご活用ください。",
     "images": [
       {
         "path": "sample-1.jpg",
@@ -13,37 +13,38 @@
     ],
     "useHtml": false,
     "isYoutube": false,
-    "youtube": ""
+    "youtube": "",
+    "category": "お知らせ",
+    "priority": "高"
   },
   {
     "id": 2,
-    "date": "2025/06/06 15:30:00",
-    "title": "サンプル投稿2 - YouTubeあり",
-    "content": "これはYouTube動画を含むサンプル投稿です。",
-    "images": [],
-    "useHtml": true,
-    "isYoutube": true,
-    "youtube": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
-  },
-  {
-    "id": 3,
-    "date": "2025/06/05 09:15:00",
-    "title": "サンプル投稿3 - 複数画像",
-    "content": "これは複数の画像を含むサンプル投稿です。",
+    "date": "2025/06/08 15:30:00",
+    "title": "第10回山口よさこい祭り開催のお知らせ",
+    "content": "第10回山口よさこい祭りを下記の通り開催いたします。\r\n\r\n開催概要\r\n\r\n開催日時: 2025年8月15日（土）10:00～18:00  \r\n開催場所: 山口市中央公園特設ステージ  \r\n参加費: 無料（観覧自由）\r\n\r\n参加チーム募集\r\n\r\n現在、参加チームを募集中です。\r\n\r\n募集要項\r\n- 参加費: 1チーム 10,000円\r\n- 申込締切: 2025年7月15日（火）\r\n- 演舞時間: 1チーム 4分以内\r\n\r\nお申し込み方法\r\n\r\n参加希望の団体は、下記連絡先までお問い合わせください。\r\n\r\n連絡先: info@yamayosa.com  \r\n電話: 083-XXX-XXXX\r\n\r\nたくさんのご参加をお待ちしております！",
     "images": [
       {
-        "path": "sample-3-1.jpg",
+        "path": "event-poster.jpg",
         "width": 400,
-        "height": 300
-      },
-      {
-        "path": "sample-3-2.jpg",
-        "width": 400,
-        "height": 300
+        "height": 600
       }
     ],
     "useHtml": false,
     "isYoutube": false,
-    "youtube": ""
+    "youtube": "",
+    "category": "イベント",
+    "priority": "高"
+  },
+  {
+    "id": 3,
+    "date": "2025/06/07 12:00:00",
+    "title": "昨年の祭りのハイライト動画を公開しました",
+    "content": "昨年開催された第9回山口よさこい祭りのハイライト動画をYouTubeで公開いたしました。\r\n\r\n各チームの迫力ある演舞をぜひご覧ください。今年の祭りに向けて、参考にしていただければと思います。\r\n\r\n動画は上記からご覧いただけます。\r\n\r\n来年の第10回記念大会も、さらに盛大に開催予定です。引き続きよろしくお願いいたします。",
+    "images": [],
+    "useHtml": true,
+    "isYoutube": true,
+    "youtube": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+    "category": "お知らせ",
+    "priority": "中"
   }
 ]

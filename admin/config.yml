@@ -11,46 +11,46 @@ local_backend: true
 media_folder: "images"
 public_folder: "/images"
 
+# サイト URL設定
+site_url: https://yamayosa.netlify.app
+display_url: https://yamayosa.netlify.app
+
 # コレクション定義
 collections:
   - name: "news"
     label: "新着情報"
-    folder: "_posts/news"
+    folder: "_posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
     fields:
-      - {label: "タイトル", name: "title", widget: "string"}
-      - {label: "投稿日", name: "date", widget: "datetime", format: "YYYY-MM-DD HH:mm:ss"}
-      - {label: "内容", name: "content", widget: "markdown"}
+      - {label: "タイトル", name: "title", widget: "string", required: true}
+      - {label: "投稿日", name: "date", widget: "datetime", format: "YYYY-MM-DD HH:mm:ss", required: true}
+      - {label: "本文", name: "body", widget: "markdown", required: true}
       - label: "画像"
         name: "images"
         widget: "list"
         required: false
+        collapsed: true
+        summary: "{{fields.path}}"
         fields:
-          - {label: "画像", name: "path", widget: "image"}
-          - {label: "幅", name: "width", widget: "number", default: 400}
-          - {label: "高さ", name: "height", widget: "number", default: 300}
-      - {label: "YouTubeリンク", name: "youtube", widget: "string", required: false}
-      - {label: "HTMLを使用", name: "useHtml", widget: "boolean", default: false}
+          - {label: "画像ファイル", name: "path", widget: "image"}
+          - {label: "画像の幅", name: "width", widget: "number", default: 400, value_type: "int", min: 100, max: 800}
+          - {label: "画像の高さ", name: "height", widget: "number", default: 300, value_type: "int", min: 100, max: 600}
+      - {label: "YouTube埋め込みコード", name: "youtube", widget: "text", required: false, hint: "YouTube動画の埋め込みiframeコードを貼り付けてください"}
+      - {label: "HTMLを使用する", name: "useHtml", widget: "boolean", default: false, hint: "本文でHTMLタグを使用する場合はONにしてください"}
+      - {label: "重要度", name: "priority", widget: "select", options: ["高", "中", "低"], default: "中", required: false}
+      - {label: "カテゴリ", name: "category", widget: "select", options: ["お知らせ", "イベント", "募集", "その他"], default: "お知らせ", required: false}
 
-  - name: "pages"
-    label: "固定ページ"
+  - name: "settings"
+    label: "サイト設定"
     files:
-      - file: "aboutus.html"
-        label: "連絡協議会について"
-        name: "aboutus"
+      - file: "_data/site.yml"
+        label: "基本設定"
+        name: "site_settings"
         fields:
-          - {label: "タイトル", name: "title", widget: "string"}
-          - {label: "内容", name: "body", widget: "markdown"}
-      - file: "event.html"
-        label: "イベント"
-        name: "event"
-        fields:
-          - {label: "タイトル", name: "title", widget: "string"}
-          - {label: "内容", name: "body", widget: "markdown"}
-      - file: "team.html"
-        label: "参加団体"
-        name: "team"
-        fields:
-          - {label: "タイトル", name: "title", widget: "string"}
-          - {label: "内容", name: "body", widget: "markdown"}
+          - {label: "サイトタイトル", name: "title", widget: "string", default: "山口県よさこい連絡協議会"}
+          - {label: "サイト説明", name: "description", widget: "text", default: "山口県よさこい連絡協議会のWebサイトです。"}
+          - {label: "最大表示件数", name: "max_posts", widget: "number", default: 5, value_type: "int", min: 1, max: 20}
+          - {label: "メールアドレス", name: "email", widget: "string", default: "info@yamayosa.com"}

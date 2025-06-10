@@ -2,10 +2,20 @@
 
 [build]
   publish = "."
+  command = "npm run build"
+
+# Git Gateway設定
+[context.production.environment]
+  HUGO_VERSION = "0.58.2"
 
 # リダイレクト設定
 [[redirects]]
   from = "/admin"
+  to = "/admin/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/*"
   to = "/admin/index.html"
   status = 200
 
@@ -16,4 +26,10 @@
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; frame-src 'self' https://www.youtube.com"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https:; frame-src 'self' https://www.youtube.com https://identity.netlify.com; connect-src 'self' https://api.netlify.com https://identity.netlify.com"
+
+# Netlify Identity設定
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"

@@ -5,10 +5,13 @@
   "main": "index.js",
   "scripts": {
     "convert": "node converter.js",
-    "start": "live-server --port=8080"
+    "build": "node build-posts.js",
+    "start": "live-server --port=8080",
+    "prebuild": "node build-posts.js"
   },
   "dependencies": {
-    "iconv-lite": "^0.6.3"
+    "iconv-lite": "^0.6.3",
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "live-server": "^1.2.2"
