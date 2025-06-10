@@ -4,9 +4,6 @@ backend:
   name: git-gateway
   branch: develop # GitHubのブランチを修正
 
-# 編集内容をプレビューするためのローカルサーバー設定
-local_backend: true
-
 # メディアファイルのアップロード先
 media_folder: "images"
 public_folder: "/images"
