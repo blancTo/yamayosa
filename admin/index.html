@@ -7,10 +7,26 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
+  <!-- デバッグ用メッセージ -->
+  <div id="loading" style="padding: 20px; text-align: center;">
+    <h2>コンテンツ管理システム読み込み中...</h2>
+    <p>しばらくお待ちください。</p>
+  </div>
+
   <!-- Netlify CMSの管理画面 -->
-  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script src="https://unpkg.com/netlify-cms@^2.10.0/dist/netlify-cms.js"></script>
   
   <script>
+  // CMSが読み込まれたらローディングメッセージを非表示に
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      const loading = document.getElementById('loading');
+      if (loading) {
+        loading.style.display = 'none';
+      }
+    }, 3000);
+  });
+
   // ログイン後のリダイレクト処理
   if (window.netlifyIdentity) {
     window.netlifyIdentity.on("init", user => {
@@ -21,6 +37,15 @@
       }
     });
   }
+
+  // エラーハンドリング
+  window.addEventListener('error', function(e) {
+    console.error('Netlify CMS Error:', e);
+    const loading = document.getElementById('loading');
+    if (loading) {
+      loading.innerHTML = '<h2>エラーが発生しました</h2><p>ブラウザのコンソールを確認してください。</p>';
+    }
+  });
   </script>
 </body>
 </html>
