@@ -19,17 +19,19 @@
   to = "/admin/index.html"
   status = 200
 
-# ヘッダー設定
+# 一般ページのヘッダー設定
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https:; frame-src 'self' https://www.youtube.com https://identity.netlify.com; connect-src 'self' https://api.netlify.com https://identity.netlify.com"
 
-# Netlify Identity設定
+# Netlify CMS管理画面用の設定（より寛容なCSP）
 [[headers]]
   for = "/admin/*"
   [headers.values]
     X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Content-Security-Policy = "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:; img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; frame-src 'self' https:; connect-src 'self' https: wss:; font-src 'self' data: https:;"
