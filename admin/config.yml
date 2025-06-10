@@ -2,18 +2,15 @@
 
 backend:
   name: git-gateway
-  branch: main # GitHubのブランチ
-
-# 編集内容をプレビューするためのローカルサーバー設定
-local_backend: true
+  branch: develop # GitHubのブランチを修正
 
 # メディアファイルのアップロード先
 media_folder: "images"
 public_folder: "/images"
 
 # サイト URL設定
-site_url: https://yamayosa.netlify.app
-display_url: https://yamayosa.netlify.app
+site_url: https://glistening-mooncake-474df6.netlify.app
+display_url: https://glistening-mooncake-474df6.netlify.app
 
 # コレクション定義
 collections:
