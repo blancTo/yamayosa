@@ -5,7 +5,7 @@ category: "お知らせ"
 priority: "中"
 useHtml: false
 images: []
-youtube: ""
+youtube: "https://www.youtube.com/watch?v=AN84Ty_SIBI"
 ---
 
 昨年開催された第9回山口よさこい祭りのハイライト動画をYouTubeで公開いたしました。
