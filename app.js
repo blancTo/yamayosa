@@ -1,6 +1,6 @@
 /**
  * 山口県よさこい連絡協議会の新着情報表示スクリプト
- * Netlify対応版
+ * Markdownファイル対応版
  */
 
 // ニュースアプリケーション
@@ -31,26 +31,8 @@ class NewsApp {
       loadingElement.style.display = 'block';
       loadingElement.textContent = 'データを読み込み中...';
       
-      // まず既存のJSONファイルから読み込み（フォールバック）
-      let response = await fetch('./data/topics.json');
-      
-      // Netlify Functionsが利用可能な場合はそちらを使用
-      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-        try {
-          const functionsResponse = await fetch('/.netlify/functions/fetch-news');
-          if (functionsResponse.ok) {
-            response = functionsResponse;
-          }
-        } catch (functionsError) {
-          console.log('Netlify Functions利用不可、JSONファイルを使用:', functionsError);
-        }
-      }
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      
-      this.newsData = await response.json();
+      // Markdownファイルから新着情報を読み込み
+      this.newsData = await this.loadMarkdownPosts();
       this.filteredData = [...this.newsData];
       
       loadingElement.style.display = 'none';
@@ -73,13 +55,223 @@ class NewsApp {
     }
   }
 
+  async loadMarkdownPosts() {
+    try {
+      // まず、ビルド済みのJSONファイルから読み込み
+      const response = await fetch('./data/topics.json');
+      if (response.ok) {
+        return await response.json();
+      }
+    } catch (error) {
+      console.log('JSONファイルから読み込み失敗、Markdownファイルから直接読み込みます');
+    }
+
+    // JSONファイルが利用できない場合は、Markdownファイルから直接読み込み
+    return await this.loadMarkdownFilesDirectly();
+  }
+
+  async loadMarkdownFilesDirectly() {
+    const posts = [];
+    
+    try {
+      // まず、posts-list.jsonからファイル一覧を取得
+      const listResponse = await fetch('./posts-list.json');
+      let markdownFiles = [];
+      
+      if (listResponse.ok) {
+        const fileList = await listResponse.json();
+        markdownFiles = fileList.map(file => file.filename);
+      } else {
+        // フォールバック：既知のファイル一覧
+        markdownFiles = [
+          '2025-06-10-sample-post-1.md',
+          '2025-06-08-event-announcement.md',
+          '2025-06-07-youtube-video.md'
+        ];
+      }
+
+      let id = 1;
+      for (const filename of markdownFiles.sort().reverse()) {
+        try {
+          const response = await fetch(`_posts/${filename}`);
+          if (response.ok) {
+            const content = await response.text();
+            const post = this.parseMarkdownFile(content, id++);
+            if (post) {
+              posts.push(post);
+            }
+          }
+        } catch (error) {
+          console.warn(`Markdownファイル ${filename} の読み込みに失敗:`, error);
+        }
+      }
+    } catch (error) {
+      console.error('ファイル一覧の取得に失敗:', error);
+    }
+
+    return posts;
+  }
+
+  parseMarkdownFile(content, id) {
+    try {
+      // フロントマターの抽出
+      const frontmatterMatch = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
+      
+      if (!frontmatterMatch) {
+        throw new Error('Invalid frontmatter format');
+      }
+      
+      const frontmatterText = frontmatterMatch[1];
+      const body = frontmatterMatch[2].trim();
+      
+      // 簡易YAMLパーサー（基本的なキー:値のペアのみ対応）
+      const frontmatter = this.parseSimpleYaml(frontmatterText);
+      
+      // 画像の処理
+      const images = frontmatter.images || [];
+      const processedImages = Array.isArray(images) ? images.map(img => ({
+        path: typeof img === 'string' ? img : img.path,
+        width: typeof img === 'object' ? (img.width || 400) : 400,
+        height: typeof img === 'object' ? (img.height || 300) : 300
+      })) : [];
+      
+      // 日付の形式変換
+      const date = new Date(frontmatter.date || Date.now());
+      const formattedDate = date.toLocaleString('ja-JP', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      }).replace(/\//g, '/');
+      
+      // 本文の処理
+      let processedContent;
+      if (frontmatter.useHtml) {
+        processedContent = this.markdownToHtml(body);
+      } else {
+        processedContent = this.markdownToText(body);
+      }
+      
+      return {
+        id: id,
+        date: formattedDate,
+        title: frontmatter.title || 'タイトルなし',
+        content: processedContent,
+        images: processedImages,
+        useHtml: frontmatter.useHtml || false,
+        isYoutube: !!frontmatter.youtube,
+        youtube: frontmatter.youtube || '',
+        category: frontmatter.category || 'お知らせ',
+        priority: frontmatter.priority || '中'
+      };
+      
+    } catch (error) {
+      console.error('Markdownファイルの解析エラー:', error);
+      return null;
+    }
+  }
+
+  parseSimpleYaml(yamlText) {
+    const result = {};
+    const lines = yamlText.split('\n');
+    let currentKey = null;
+    let currentArray = null;
+    
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed) continue;
+      
+      // 配列の要素
+      if (trimmed.startsWith('- ')) {
+        if (currentArray && currentKey) {
+          const value = trimmed.substring(2).trim();
+          if (value.includes(':')) {
+            // オブジェクトの場合
+            const obj = {};
+            const parts = value.split(',');
+            for (const part of parts) {
+              const [k, v] = part.split(':').map(s => s.trim());
+              if (k && v) {
+                obj[k] = isNaN(v) ? v : parseInt(v);
+              }
+            }
+            currentArray.push(obj);
+          } else {
+            currentArray.push(value);
+          }
+        }
+        continue;
+      }
+      
+      // キー:値のペア
+      const colonIndex = trimmed.indexOf(':');
+      if (colonIndex > 0) {
+        const key = trimmed.substring(0, colonIndex).trim();
+        const value = trimmed.substring(colonIndex + 1).trim();
+        
+        if (value === '') {
+          // 配列の開始
+          currentKey = key;
+          currentArray = [];
+          result[key] = currentArray;
+        } else {
+          // 通常の値
+          currentKey = null;
+          currentArray = null;
+          
+          // 型変換
+          if (value === 'true') {
+            result[key] = true;
+          } else if (value === 'false') {
+            result[key] = false;
+          } else if (!isNaN(value) && value !== '') {
+            result[key] = parseInt(value);
+          } else {
+            // 引用符を除去
+            result[key] = value.replace(/^["']|["']$/g, '');
+          }
+        }
+      }
+    }
+    
+    return result;
+  }
+
+  markdownToText(markdown) {
+    return markdown
+      .replace(/^#+\s+/gm, '') // ヘッダー記号を削除
+      .replace(/\*\*(.*?)\*\*/g, '$1') // 太字を削除
+      .replace(/\*(.*?)\*/g, '$1') // 斜体を削除
+      .replace(/\[(.*?)\]\(.*?\)/g, '$1') // リンクをテキストのみに
+      .replace(/`(.*?)`/g, '$1') // インラインコードを削除
+      .replace(/\n{2,}/g, '\n\n') // 複数の改行を調整
+      .trim();
+  }
+
+  markdownToHtml(markdown) {
+    return markdown
+      .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+      .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+      .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>')
+      .replace(/`(.*?)`/g, '<code>$1</code>')
+      .replace(/\n\n/g, '</p><p>')
+      .replace(/\n/g, '<br>')
+      .replace(/^(.*)$/, '<p>$1</p>');
+  }
+
   getSampleData() {
     return [
       {
         id: 1,
         date: "2025/06/10 10:00:00",
-        title: "Google Formsシステム導入のお知らせ",
-        content: "新着情報の投稿がより簡単になりました。\n\n管理者の方は専用のGoogleフォームから記事を投稿できます。\n投稿後は自動的にサイトに反映されます。",
+        title: "Markdownファイルシステム導入のお知らせ",
+        content: "新着情報の更新がより簡単になりました。\n\n_postsディレクトリ内にMarkdownファイルを追加するだけで、自動的にサイトに反映されます。\n\nファイル名は「YYYY-MM-DD-タイトル.md」の形式で作成してください。",
         images: [],
         useHtml: false,
         isYoutube: false,

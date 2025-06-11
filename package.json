@@ -6,8 +6,10 @@
   "scripts": {
     "convert": "node converter.js",
     "build": "node build-posts.js",
+    "list-posts": "node auto-posts-loader.js",
+    "build-all": "npm run list-posts && npm run build",
     "start": "live-server --port=8080",
-    "prebuild": "echo 'Building posts...'",
+    "prebuild": "npm run list-posts",
     "postbuild": "echo 'Build completed successfully!'",
     "fetch-forms": "node fetch-google-forms.js"
   },
