@@ -4,7 +4,7 @@ date: "2025-06-07 12:00:00"
 category: "お知らせ"
 priority: "中"
 useHtml: false
-images: []
+images: [https://www.youtube.com/watch?v=AN84Ty_SIBI]
 youtube: ""
 ---
 
