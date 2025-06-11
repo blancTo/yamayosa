@@ -118,9 +118,9 @@ function buildPosts() {
       fs.mkdirSync(DATA_DIR, { recursive: true });
     }
     
-    // Markdownファイルの取得
+    // Markdownファイルの取得（template.mdを除外）
     const files = fs.readdirSync(POSTS_DIR)
-      .filter(file => file.endsWith('.md'))
+      .filter(file => file.endsWith('.md') && file !== 'template.md')
       .sort()
       .reverse(); // 新しい順にソート
     
