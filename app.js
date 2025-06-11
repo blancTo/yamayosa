@@ -17,26 +17,38 @@ class NewsApp {
   }
 
   async init() {
-    await this.loadNewsData();
     this.setupEventListeners();
-    this.displayNews();
-    this.updatePagination();
+    await this.loadNewsData();
+    // displayNews()とupdatePagination()はloadNewsData()内で実行される
   }
 
   async loadNewsData() {
     const loadingElement = document.getElementById('loading-message');
     const containerElement = document.getElementById('news-container');
+    const mainElement = document.getElementById('main');
     
     try {
-      loadingElement.style.display = 'block';
+      // ローディング状態に設定
+      mainElement.classList.add('loading-state');
+      containerElement.classList.remove('show');
       loadingElement.textContent = 'データを読み込み中...';
       
       // Markdownファイルから新着情報を読み込み
       this.newsData = await this.loadMarkdownPosts();
       this.filteredData = [...this.newsData];
       
-      loadingElement.style.display = 'none';
-      containerElement.style.display = 'block';
+      // データが読み込まれてからコンテンツを表示
+      this.displayNews();
+      this.updatePagination();
+      
+      // スムーズに表示を切り替え
+      setTimeout(() => {
+        mainElement.classList.remove('loading-state');
+        containerElement.style.display = 'block';
+        setTimeout(() => {
+          containerElement.classList.add('show');
+        }, 50);
+      }, 300);
       
     } catch (error) {
       console.error('ニュースデータの読み込みエラー:', error);
@@ -47,11 +59,14 @@ class NewsApp {
       this.filteredData = [...this.newsData];
       
       setTimeout(() => {
-        loadingElement.style.display = 'none';
-        containerElement.style.display = 'block';
         this.displayNews();
         this.updatePagination();
-      }, 2000);
+        mainElement.classList.remove('loading-state');
+        containerElement.style.display = 'block';
+        setTimeout(() => {
+          containerElement.classList.add('show');
+        }, 50);
+      }, 1000);
     }
   }
 
@@ -380,12 +395,19 @@ class NewsApp {
     const endIndex = startIndex + this.itemsPerPage;
     const pageData = this.filteredData.slice(startIndex, endIndex);
 
-    if (pageData.length === 0) {
-      container.innerHTML = '<p>該当する記事が見つかりませんでした。</p>';
-      return;
-    }
-
-    container.innerHTML = pageData.map(item => this.createNewsItemHTML(item)).join('');
+    // コンテンツ更新時のちらつきを防ぐ
+    container.style.opacity = '0';
+    
+    setTimeout(() => {
+      if (pageData.length === 0) {
+        container.innerHTML = '<p>該当する記事が見つかりませんでした。</p>';
+      } else {
+        container.innerHTML = pageData.map(item => this.createNewsItemHTML(item)).join('');
+      }
+      
+      // フェードインで表示
+      container.style.opacity = '1';
+    }, 100);
   }
 
   createNewsItemHTML(item) {
