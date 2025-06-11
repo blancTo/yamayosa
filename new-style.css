@@ -169,16 +169,32 @@ button:hover {
 #news-container {
   /* 初期表示設定 */
   display: none;
-  opacity: 1;  /* 最初から不透明に設定 */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
 #news-container.show {
   display: block;
+  opacity: 1;
+}
+
+/* ローディング状態のスムーズな切り替え */
+#loading-message {
+  transition: opacity 0.2s ease-in-out;
 }
 
 /* レイアウトシフトを防ぐためのミニマムハイト */
 #main {
   min-height: 400px;
+}
+
+/* データ読み込み中のコンテナ */
+.loading-state #news-container {
+  display: none !important;
+}
+
+.loading-state #loading-message {
+  display: block !important;
 }
 
 /* レスポンシブデザイン */
