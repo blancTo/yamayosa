@@ -1,53 +1,18 @@
 [
   {
     "id": 1,
-    "date": "2025/06/11 16:00:00",
-    "title": "YouTube動画埋め込みのサンプル",
-    "content": "この記事では、YouTube動画の埋め込み方法を説明します。\r\n\r\n動画について\r\n\r\n下記の動画をご覧ください。動画は記事の下部に自動的に表示されます。\r\n\r\n埋め込み方法\r\n\r\n1. YouTube動画のURLから動画IDを取得\r\n2. フロントマターのyoutubeフィールドに埋め込みコードを記述\r\n3. 記事を保存して公開\r\n\r\nこのようにして、YouTube動画を記事に埋め込むことができます。",
+    "date": "2025/08/29 14:00:00",
+    "title": "にしきふるさとまつり（山口県大会）のご案内",
+    "content": "にしきふるさとまつり（山口県大会）の案内です！\r<br>\r<br>拝啓、残暑の頃、皆さま方におかれましては、祭りシーズンを迎え、ますますご清栄のこととお喜び申し上げます。\r<br>\r<br>さて、今年も従来どおり「にしきふるさとまつり」が開催されることが決定し、よさこいも昨年同様「2025よっちょれ！よさこい」として行います。\r<br>\r<br>お陰をもちまして「よっちょれ！よさこい」も22回目を迎えることとなり、これも皆様方のあたたかいご支援のお陰だと心より感謝申し上げます。\r<br>\r<br>毎年、須賀IZANAI連をはじめ、県内外からたくさんのチームのご参加を頂き小さな町に感動と元気を注いでいただいております。\r<br>\r<br>今年は更に「よさこい山口県大会」の冠を掲げ、魂の通い合うあたたかい祭りを創りたいと願っておりますので、ご多忙のところ大変恐縮ですが、是非ともご参加くださいますよう、よろしくお願い申し上げます。\r<br>\r<br><a href=\"/pdf/nishiki2025.pdf\">にしきふるさとまつり2025 詳細案内（PDF）</a>",
     "images": [],
-    "useHtml": false,
-    "isYoutube": true,
-    "youtube": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/AN84Ty_SIBI\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
-    "category": "お知らせ",
-    "priority": "中"
-  },
-  {
-    "id": 2,
-    "date": "2025/06/11 15:00:00",
-    "title": "新着情報システムのリニューアルについて",
-    "content": "山口県よさこい連絡協議会の新着情報システムをリニューアルしました。\r\n\r\n主な変更点\r\n\r\n1. 簡単な更新方法\r\nこれまでのNetlifyCMSやGoogleフォームでの投稿に代わり、Markdownファイルでの更新が可能になりました。\r\n\r\n2. 投稿方法\r\n1. _postsディレクトリに新しい.mdファイルを作成\r\n2. テンプレート(template.md)をコピーして編集\r\n3. ファイルをアップロードするだけで自動反映\r\n\r\n3. ファイル名の規則\r\n`\r\nYYYY-MM-DD-記事タイトル.md\r\n`\r\n\r\n例：2025-06-15-spring-festival.md\r\n\r\n利用可能な機能\r\n\r\n- カテゴリ分け: お知らせ、イベント、結果など\r\n- 優先度設定: 高、中、低\r\n- 画像挿入: 複数画像対応\r\n- YouTube埋め込み: 動画コンテンツ対応\r\n- Markdown記法: 見出し、リスト、リンクなど\r\n\r\n今後の予定\r\n\r\nより使いやすいシステムを目指して継続的に改善していきます。\r\n\r\nご不明な点がございましたら、README_NEWS.mdをご参照いただくか、お気軽にお問い合わせください。",
-    "images": [],
-    "useHtml": false,
-    "isYoutube": false,
-    "youtube": "",
-    "category": "お知らせ",
-    "priority": "高"
-  },
-  {
-    "id": 3,
-    "date": "2025/06/11 16:30:00",
-    "title": "画像埋め込みのサンプル記事",
-    "content": "この記事では、画像の埋め込み方法を説明します。\r\n\r\nイベントの様子\r\n\r\n上記の画像は、先日開催されたイベントの様子です。\r\n\r\n画像について\r\n\r\n- 1枚目: イベント会場の全景\r\n- 2枚目: 参加チームの集合写真\r\n\r\n複数の画像を同時に表示することができます。画像は記事の内容の下に自動的に表示されます。\r\n\r\n画像のサイズ設定\r\n\r\n- width: 表示幅（ピクセル）\r\n- height: 表示高さ（ピクセル）\r\n\r\nレスポンシブ対応により、小さな画面では自動的にサイズが調整されます。",
-    "images": [
-      {
-        "path": "sample-event.jpg",
-        "width": 600,
-        "height": 400
-      },
-      {
-        "path": "team-photo.png",
-        "width": 500,
-        "height": 300
-      }
-    ],
-    "useHtml": false,
+    "useHtml": true,
     "isYoutube": false,
     "youtube": "",
     "category": "イベント",
-    "priority": "中"
+    "priority": "高"
   },
   {
-    "id": 4,
+    "id": 2,
     "date": "2025/06/10 10:00:00",
     "title": "山口県よさこい連絡協議会へようこそ",
     "content": "山口県よさこい連絡協議会のWebサイトにお越しいただき、ありがとうございます。\r\n\r\nこのサイトでは、山口県内のよさこいチームの活動情報やイベント情報を発信しています。\r\n\r\n主な活動内容\r\n\r\n- よさこいイベントの企画・運営\r\n- 各チーム間の交流促進\r\n- よさこい文化の普及活動\r\n- 新規チームの支援\r\n\r\n最新の情報は随時更新していきますので、ぜひブックマークしてご活用ください。",
@@ -63,28 +28,5 @@
     "youtube": "",
     "category": "お知らせ",
     "priority": "高"
-  },
-  {
-    "id": 5,
-    "date": "2025/06/07 12:00:00",
-    "title": "昨年の祭りのハイライト動画を公開しました",
-    "content": "昨年開催された第9回山口よさこい祭りのハイライト動画をYouTubeで公開いたしました。\r\n\r\n各チームの迫力ある演舞をぜひご覧ください。今年の祭りに向けて、参考にしていただければと思います。\r\n\r\n動画の詳細は別途お知らせいたします。\r\n\r\n来年の第10回記念大会も、さらに盛大に開催予定です。引き続きよろしくお願いいたします。",
-    "images": [
-      {
-        "path": "118-1.jpg",
-        "width": 400,
-        "height": 300
-      },
-      {
-        "path": "118-2.jpg",
-        "width": 400,
-        "height": 300
-      }
-    ],
-    "useHtml": false,
-    "isYoutube": true,
-    "youtube": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/AN84Ty_SIBI?si=69C0_mzY-ejMAhIA\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
-    "category": "お知らせ",
-    "priority": "中"
   }
 ]

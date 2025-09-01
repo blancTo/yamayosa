@@ -44,6 +44,7 @@ class NewsApp {
       // スムーズに表示を切り替え
       setTimeout(() => {
         mainElement.classList.remove('loading-state');
+        document.getElementById('loading-message').style.display = 'none';
         containerElement.style.display = 'block';
         setTimeout(() => {
           containerElement.classList.add('show');
@@ -414,7 +415,14 @@ class NewsApp {
     const priorityClass = item.priority === '高' ? 'priority-high' : 
                          item.priority === '低' ? 'priority-low' : 'priority-medium';
     
-    let contentHTML = item.content.replace(/\n/g, '<br>');
+    let contentHTML;
+    if (item.useHtml) {
+      // HTMLが有効な場合は、既にHTML変換済みのcontentをそのまま使用
+      contentHTML = item.content.replace(/\r\n/g, '\n').replace(/\n/g, '<br>');
+    } else {
+      // HTMLが無効な場合は、改行のみ変換
+      contentHTML = item.content.replace(/\n/g, '<br>');
+    }
     
     // YouTubeコンテンツの処理
     if (item.isYoutube && item.youtube) {
@@ -424,9 +432,10 @@ class NewsApp {
     // 画像の処理
     let imagesHTML = '';
     if (item.images && item.images.length > 0) {
-      imagesHTML = item.images.map(img => 
-        `<img src="${img.path}" alt="画像" width="${img.width || 400}" height="${img.height || 300}" style="max-width: 100%; height: auto; margin: 10px 0;">`
-      ).join('');
+      imagesHTML = item.images.map(img => {
+        const imagePath = img.path.startsWith('/') ? img.path : `/images/${img.path}`;
+        return `<img src="${imagePath}" alt="画像" width="${img.width || 400}" height="${img.height || 300}" style="max-width: 100%; height: auto; margin: 10px 0;">`;
+      }).join('');
     }
 
     return `
