@@ -46,6 +46,20 @@ function markdownToText(markdown) {
     .trim();
 }
 
+function markdownToHtml(markdown) {
+  return markdown
+    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>')
+    .replace(/`(.*?)`/g, '<code>$1</code>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/\n/g, '<br>')
+    .replace(/^(.*)$/, '<p>$1</p>');
+}
+
 /**
  * Markdownデータを旧形式のJSONに変換
  */
@@ -79,8 +93,8 @@ function convertToOldFormat(markdownData, index) {
   // 本文の処理
   let content;
   if (frontmatter.useHtml) {
-    // HTMLを許可する場合はMarkdownをそのまま使用
-    content = body;
+    // HTMLを許可する場合はMarkdownをHTMLに変換
+    content = markdownToHtml(body);
   } else {
     // プレーンテキストに変換
     content = markdownToText(body);
